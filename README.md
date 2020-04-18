@@ -58,6 +58,8 @@ services
   .AddMessageBehavior<PingMessageBehavior>();
 ```
 
+Behaviors are executed in the order they are added.
+
 Then you are able to use the injected `IMediator` interface.
 
 ### Sending messages
