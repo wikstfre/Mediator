@@ -11,6 +11,46 @@ Create a pipeline around your messages with behaviors, easy and verbose registra
 
 Setup your commands, queries, events and pipelines using dependency injection. An example:
 
+### Implement handler and behavior:
+
+```c#
+public class AddFilterHandler : IMessageHandler<AddFilter>
+{
+  private readonly ISomeService _someService;
+
+  public PingMessageHandler(ISomeService someService)
+  {
+    _someService = someService ?? throw new ArgumentNullException(nameof(someService));
+  }
+
+  public async Task Handle(PingMessage message, IMessageContext context)
+  {
+    // handle the message
+  }
+}
+
+public class PingMessageBehavior : IMessageBehavior<PingMessage>
+{
+  private readonly ISomeOtherService _someOtherService;
+
+  public PingMessageBehavior(ISomeOtherService someOtherService)
+  {
+    _someOtherService = someOtherService ?? throw new ArgumentNullException(nameof(someOtherService));
+  }
+  
+  public async Task Handle(IMessage message, IMessageContext context, PipelineDelegate next)
+  {
+    // do something before the handler is executed
+	
+    await next().ConfigureAwait(false);
+	
+	// do something after the handler is executed
+  }
+}
+```
+
+### Register message, handler and behavior
+
 ```c#
 services
   .AddMessage<PingMessage>()
