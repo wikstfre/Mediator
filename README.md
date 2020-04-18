@@ -67,7 +67,3 @@ var ping = new PingMessage();
 
 mediator.Send(ping);
 ```
-
-## Why
-
-When designing *CQRS* or *Event-Driven* applications we need to publish events from the infrastructure layer into the *domain event handlers*. We do not want framework dependencies leaking out to the Model. 
