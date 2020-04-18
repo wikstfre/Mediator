@@ -44,7 +44,7 @@ public class PingMessageBehavior : IMessageBehavior<PingMessage>
 	
     await next().ConfigureAwait(false);
 	
-	// do something after the handler is executed
+    // do something after the handler is executed
   }
 }
 ```
