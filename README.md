@@ -13,9 +13,9 @@ Setup your commands, queries, events and pipelines using dependency injection. A
 
 ```c#
 services
-	.AddMessage<PingMessage>()
-	.AddMessageHandler<PingMessageHandler>()
-	.AddMessageBehavior<PingMessageBehavior>();
+  .AddMessage<PingMessage>()
+  .AddMessageHandler<PingMessageHandler>()
+  .AddMessageBehavior<PingMessageBehavior>();
 ```
 
 Then you are able to use the injected `IMediator` interface.
