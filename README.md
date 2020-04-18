@@ -14,7 +14,7 @@ Setup your commands, queries, events and pipelines using dependency injection. A
 ### Implement handler and behavior:
 
 ```c#
-public class AddFilterHandler : IMessageHandler<AddFilter>
+public class PingMessageHandler : IMessageHandler<PingMessage>
 {
   private readonly ISomeService _someService;
 
